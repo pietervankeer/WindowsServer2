@@ -1,0 +1,16 @@
+{
+    "Comment": "Instellingen voor de domeincontroller",
+    "Hostname": "EP1-DC-ALFA",
+    "Network": [
+        {
+            "Name": "WAN",
+            "DHCP": "True",
+            "IPAdress": ""
+        },
+        {
+            "Name": "LAN10",
+            "DHCP": "False",
+            "IPAdress": "192.168.10.200"
+        }
+    ]
+}
