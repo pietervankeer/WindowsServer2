@@ -4,5 +4,8 @@
         "DomainName": "EP1-PIETER.hogent",
         "NetBiosName": "EP1-PIETER",
         "password": "Admin2021"
+    },
+    "DNS": {
+        "NetworkID": "192.168.10.0/24"
     }
 }
