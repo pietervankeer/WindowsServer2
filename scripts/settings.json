@@ -1,0 +1,8 @@
+{
+    "comment": "Algemene settings",
+    "ADDS": {
+        "DomainName": "EP1-PIETER.hogent",
+        "NetBiosName": "EP1-PIETER",
+        "password": "Admin2021"
+    }
+}
