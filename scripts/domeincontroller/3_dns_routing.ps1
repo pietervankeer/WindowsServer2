@@ -30,6 +30,17 @@ catch {
 # NAT routing
 #------------------------------------------------------------------------------
 
+try {
+    $job = @()
+    $jobs += start-Job -Command {
+        Install-WindowsFeature –ConfigurationFilePath F:\configfiles\install_natrouting.xml
+    }
+    Receive-Job -Job $jobs -Wait | select-Object Success, RestartNeeded, exitCode, FeatureResult
+    Write-Host "Natrouting successfully installed" -ForegroundColor Green
+}
+catch {
+    Write-Warning -Message $("Failed to install Natrouting. Error: "+ $_.Exception.Message)
+}
 
 
 
