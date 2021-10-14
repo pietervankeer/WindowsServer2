@@ -32,13 +32,16 @@ $ipServer1 = $settings.Network[1].IPAdress
 
 # Install dhcp
 try {
-    Install-WindowsFeature –ConfigurationFilePath F:\configfiles\install_dhcp.xml
-    Write-Host "DHCP installed successfully" -ForegroundColor Green
+    $job = @()
+    $jobs += start-Job -Command {
+        Install-WindowsFeature –ConfigurationFilePath F:\configfiles\install_dhcp.xml
+    }
+    Receive-Job -Job $jobs -Wait | select-Object Success, RestartNeeded, exitCode, FeatureResult
+    Write-Host "DHCP successfully installed" -ForegroundColor Green
 }
 catch {
     Write-Warning -Message $("Failed to install DHCP. Error: "+ $_.Exception.Message)
 }
-
 
 # Configure DHCP
 Try {
@@ -48,12 +51,15 @@ Try {
 
     # Add DHCP to DC
     Add-DhcpServerInDC
+    Write-Host "DHCP added in DC" -ForegroundColor Green
 
     # Add IPv4 scope
     Add-DHCPServerv4Scope -Name $scopeName -StartRange $scopeStartIp -EndRange $scopeEndIp -SubnetMask $scopeSubMask -Description $scopeDescr -LeaseDuration $scopeLease -State Active
+    Write-Host "DHCP scope added" -ForegroundColor Green
 
     # Authorize DHCP server
     Set-DHCPServerv4OptionValue -ScopeID $scopeId -DnsDomain $domeinNaam -DnsServer $ipServer1 -Router $ipServer1
+    Write-Host "Scope authorized" -ForegroundColor Green
 
     # Restart DHCP server
     Restart-Service dhcpserver
