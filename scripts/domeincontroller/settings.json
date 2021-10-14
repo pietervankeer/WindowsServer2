@@ -12,5 +12,13 @@
             "DHCP": "False",
             "IPAdress": "192.168.10.200"
         }
-    ]
+    ],
+    "DHCP": {
+        "scopeName": "HoGent-EP1",
+        "ScopeDescr": "De scope voor het toewijzen van ip-adressen in het netwerk.",
+        "scopeStartIp": "192.168.10.100",
+        "scopeEndIp": "192.168.10.150",
+        "scopeSubnetMask": "255.255.255.0",
+        "scopeLease": "8.00:00:00"
+    }
 }
