@@ -29,3 +29,17 @@ Open de zone `EP1-PIETER-hogent` en zoek naar een record met de naam `ep1-dc-alf
 
 Rechtermuisklik op dit record --> properties
 Vink "Update associated pointer (PTR) record" aan.
+
+## DHCP
+
+Om de domeincontroller IP adressen te laten uitdelen moeten we hiervan een DHCP-server maken. Dit kan je doen met het script [4_DHCP.ps1](../../scripts/domeincontroller/4_dhcp.ps1).
+Dit zorgt er voor dat de rol DHCP server zal geinstalleerd worden alsook het aanmaken van een DHCP scope waar kan instellen welke addressen er worden uitgedeeld en welke niet. Wat er precies zal geconfigureerd worden kan je vinden in het [settingsbestand](../../scripts/domeincontroller/settings.json).
+
+| Variabele         | Uitleg                                                                                                                         |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| `scopeName`       | Dit is de naam van de scope die wordt aangemaakt. In de opdracht stond dat dit "HoGent-EP1" moest zijn.                        |
+| `scopeDescr`      | Hier wordt de beschrijving geschreven van de scope. Deze dient om IP-adressen uit te delen in het netwerk.                     |
+| `scopeStartIp`    | Het eerste adres in het bereik van ip-adressen dat je wil uitdelen. bij ons is het bereik [192.168.10.100 tot 192.168.10.150]  |
+| `scopeEndIp`      | Het laatste adres in het bereik van ip-adressen dat je wil uitdelen. bij ons is het bereik [192.168.10.100 tot 192.168.10.150] |
+| `scopeSubnetMask` | Het subnetmask geeft aan wat het netwerk is waarin we zitten.                                                                  |
+| `scopeLease`      | De duurtijd dat een uitgedeeld ip-adres geldig is. Als deze tijd verstreken is wordt het vernieuwd.                            |
