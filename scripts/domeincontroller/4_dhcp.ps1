@@ -67,3 +67,5 @@ Try {
 
     Write-Warning -Message $("Failed to configure DHCP. Error: "+ $_.Exception.Message)
 }
+
+Pause
