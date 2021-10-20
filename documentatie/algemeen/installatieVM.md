@@ -1,6 +1,6 @@
 # Virtuele machine aanmaken
 
-Maak binnen de hypervisor een virtuele machine aan met volgende specificaties:
+Maak binnen de hypervisor naar keuze een virtuele machine aan met volgende specificaties:
 
 - 1 processorkern
 - minimum 2 Gb werkgeheugen
