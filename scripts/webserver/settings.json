@@ -1,0 +1,11 @@
+{
+    "Comment": "Instellingen voor de webserver",
+    "Hostname": "EP1-WEB",
+    "Network": [
+        {
+            "Name": "LAN10",
+            "DHCP": "False",
+            "IPAdress": "192.168.10.220"
+        }
+    ]
+}
