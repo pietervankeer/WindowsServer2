@@ -19,7 +19,7 @@ $netwerkid = $generalSettings.DNS.NetworkID
 
 try {
     # Add reverse lookup zone
-    Add-DnsServerPrimaryZone -NetworkID $netwerkid -ReplicationScope "Domain" -DynamicUpdate "Secure"
+    Add-DnsServerPrimaryZone -NetworkID $netwerkid -ReplicationScope "Domain" -DynamicUpdate "Secure" -Ptr
     Write-Host "Reverse lookup zone successfully addedd" -ForegroundColor Green
 }
 catch {
