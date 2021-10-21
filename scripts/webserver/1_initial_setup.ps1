@@ -99,7 +99,13 @@ function Update-NetAdapter($name, $newName, $ipv4Address, $dhcp) {
 Update-NetAdapter -name "Ethernet" -newName $netAdapters[0].Name -ipv4Address $netAdapters[0].IPAdress -dhcp $False
 
 # DNS server instellen
-Set-DnsClientServerAddress -InterfaceIndex 4 -ServerAddresses ($dnsIP)
+try {
+    Get-NetAdapter -Name LAN10 | Set-DnsClientServerAddress -ServerAddresses ($dnsIP)
+    Write-Host "DNS server updated successfully" -ForegroundColor Green
+}
+catch {
+    Write-Warning -Message $("Failed to Update DNS server. Error: "+ $_.Exception.Message)
+}
 
 # Restart computer
 Write-Host "All changes will take effect after the startup"
