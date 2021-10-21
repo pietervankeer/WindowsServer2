@@ -43,3 +43,24 @@ Dit zorgt er voor dat de rol DHCP server zal geinstalleerd worden alsook het aan
 | `scopeEndIp`      | Het laatste adres in het bereik van ip-adressen dat je wil uitdelen. bij ons is het bereik [192.168.10.100 tot 192.168.10.150] |
 | `scopeSubnetMask` | Het subnetmask geeft aan wat het netwerk is waarin we zitten.                                                                  |
 | `scopeLease`      | De duurtijd dat een uitgedeeld ip-adres geldig is. Als deze tijd verstreken is wordt het vernieuwd.                            |
+
+## Nat router
+
+Om ons intern netwerk toegang te geven tot het internet zal de domeincontroller een natrouter moeten worden.  
+De role die hiervoor nodig is `Remote access` is reeds geïnstalleerd, maar nog niet geconfigureerd.
+
+Ga naar Tools --> Remote access  
+Een dialoogvenster opent.  
+Rechtermuisklik op de domeincontroller en kies voor `Configure and Enable Routing and Remote Access`
+
+![config NAT routing](../images/configNATrouting.JPG)
+
+Doorloop de wizard en kies voor `Network adress translation (NAT)`
+
+![config NAT routing](../images/configNATrouting1.JPG)
+
+Kies de netwerkinterface die connectie heeft met het internet. In ons geval is dit WAN
+
+![config NAT routing](../images/configNATrouting2.JPG)
+
+Klik op `Next` en ten slotte op `Finish`
