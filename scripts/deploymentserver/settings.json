@@ -1,0 +1,11 @@
+{
+    "Comment": "Instellingen voor de deploymentserver",
+    "Hostname": "EP1-SCCM",
+    "Network": [
+        {
+            "Name": "LAN10",
+            "DHCP": "False",
+            "IPAdress": "192.168.10.225"
+        }
+    ]
+}
