@@ -49,11 +49,11 @@ Tijdens de promotie worden de domeinnaam, netbiosnaam en safemode administrator 
 }
 ```
 
-| Variabele     | Uitleg                                                                                                                                                   |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DomainName`  | Domeinnaam. Hier vul je de naam in dat je wil instellen voor het domein.                                                                                 |
-| `NetBiosName` | Netbiosnaam. Dit kan je vergelijken met een roepnaam. als ik wil inloggen als domeinadministrator gebruik ik de netbiosnaam `\\EP1-PIETER\Administrator` |
-| `password`    | Dit is een wachtwoord dat je moet gebruiken als de computer opstart in Safe mode, of een variant hiervan.                                                |
+| Variabele     | Uitleg                                                                                                                                                 |
+| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DomainName`  | Domeinnaam. Hier vul je de naam in dat je wil instellen voor het domein.                                                                               |
+| `NetBiosName` | Netbiosnaam. Dit kan je vergelijken met een roepnaam. als ik wil inloggen als domeinadministrator gebruik ik de netbiosnaam `EP1-PIETER\Administrator` |
+| `password`    | Dit is een wachtwoord dat je moet gebruiken als de computer opstart in Safe mode, of een variant hiervan.                                              |
 
 ### DNS
 
