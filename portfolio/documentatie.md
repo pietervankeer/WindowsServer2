@@ -2,6 +2,10 @@
 
 ## Algemeen
 
+### Join Domain
+
+Dit script gaat er voor zorgen dat de computer in het domain gezet wordt. Het script maakt een account aan in Active Directory en plaatst het in de Organisational unit MemberServers.
+
 ## Domeincontroller
 
 ### Domeincontroller: Initial setup
@@ -101,6 +105,64 @@ Dit zorgt er voor dat de rol DHCP server zal geinstalleerd worden alsook het aan
 
 ## Webserver
 
+### Webserver: Initial setup
+
+Het [initial setup](../scripts/Webserver/1_initial_setup.ps1) script gaat:
+
+- Hostname instellen
+- Windows updates uitschakelen __(in een productieomgeving is dit ten zeerste afgeraden)__
+- Netwerkadapters goed instellen
+  - Ip-adressen instellen (statisch)
+  - Naamgeving van netwerk adapters
+  - IPv6 uitschakelen
+
+```json
+{
+    "Hostname": "EP1-WEB",
+    "Network": [
+        {
+            "Name": "LAN10",
+            "DHCP": "False",
+            "IPAdress": "192.168.10.220"
+        }
+    ]
+}
+```
+
+### Active Directory Certificate Services (ADCS)
+
+Het script [2_install_webserver.ps1] gaat de rol `Active directory certificate services` installeren. Maar nog niet configureren
+
 ## Deploymentserver
+
+### Deploymentserver: Initial setup
+
+Het [initial setup](../scripts/deploymentserver/1_initial_setup.ps1) script gaat:
+
+- Hostname instellen
+- Windows updates uitschakelen __(in een productieomgeving is dit ten zeerste afgeraden)__
+- Netwerkadapters goed instellen
+  - Ip-adressen instellen (statisch)
+  - Naamgeving van netwerk adapters
+  - IPv6 uitschakelen
+
+```json
+{
+    "Hostname": "EP1-SCCM",
+    "Network": [
+        {
+            "Name": "LAN10",
+            "DHCP": "False",
+            "IPAdress": "192.168.10.225"
+        }
+    ]
+}
+```
+
+nadat dit uitgevoerd is geen we de nodige programma's installeren:
+
+- Dubbelklik op `F:\configfiles\install_adk.exe` en installeer het programma.
+- Dubbelklik op `F:\configfiles\install_mdt.msi` en installeer het programma.
+- Dubbelklik op `F:\configfiles\install_sccm.exe` en installeer het programma.
 
 ## Certificatieserver
