@@ -1,2 +1,6 @@
 # Generated pdf
 *.pdf
+
+# install files
+*.msi
+*.exe
