@@ -1,5 +1,5 @@
 {
-    "Comment": "Instellingen voor de webserver",
+    "Comment": "Instellingen voor de certificatieserver",
     "Hostname": "EP1-CA",
     "Network": [
         {
