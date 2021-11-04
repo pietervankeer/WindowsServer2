@@ -53,12 +53,14 @@ catch {
     Write-Warning -Message $("Failed to configure Active Directory Domain Services. Error: "+ $_.Exception.Message)
 }
 
+
 try {
-    NEW-ADOrganizationalUnit "MemberServers”
-    Write-Host "Active Directory Domain Services Organisational Unit has been added" -ForegroundColor Green
+    NEW-ADOrganizationalUnit "MemberServers"
+    Write-Host "Active Directory Domain Services Organisational Unit has been addedd" -ForegroundColor Green
 }
 catch {
-    Write-Warning -Message $("Failed to add Active Directory Domain Services organisational unit. Error: "+ $_.Exception.Message)
+    Write-Warning -Message $("Failed to add Active Directory Domain Services Organisational Unit. Error: " + $_.Exception.Message)
 }
 
+# Don't close terminal yet
 Pause
