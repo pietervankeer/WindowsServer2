@@ -1,0 +1,6 @@
+# Default behaviour
+* text=auto
+
+# Windows Batch or PowerShell scripts should have CRLF endings
+*.bat text eol=crlf
+*.ps1 text eol=crlf
