@@ -11,6 +11,7 @@
     - [Domeincontroller: Initial Setup](#domeincontroller-initial-setup)
     - [Active Directory Domain Services (ADDS)](#active-directory-domain-services-adds)
     - [DNS](#dns)
+      - [Nat routing](#nat-routing)
     - [DHCP](#dhcp)
   - [Webserver (EP1-WEB)](#webserver-ep1-web)
     - [Webserver: Initial Setup](#webserver-initial-setup)
@@ -172,7 +173,32 @@ Dit gaat een reverse lookupzone aanmaken en de server configureren als nat route
 Voer het script [3_dns_routing.ps1](../scripts/domeincontroller/3_dns_routing.ps1) uit zodat dns geconfigureerd wordt.  
 Dit gaat een reverse lookupzone aanmaken en daarna de rol `Remote access` installeren. De instellingen hiervan kan je vinden in het [algemene settingsbestand](../scripts/settings.json)
 
+Nadat het script uitgevoerd is moeten we het _Ptr record_ genereren. Navigeer hiervoor naar _Tools_ --> _DNS_ in de server manager.  
+Navigeer naar de forward lookup-zone `EP1-PIETER.hogent` en zoek het record met als data het ip adres van de LAN10 interface. (`192.168.10.200`). Open het eigenschappenvenster met rechtermuisklik en vink _Update associated pointer (PTR) record_ aan.
+
+![dns manager](../documentatie/images/dns.JPG)
+![vink update ptr aan](../documentatie/images/dns1.JPG)
+
 > Een _reverse lookup zone_ zorgt ervoor dat een IP-adres omgezet wordt naar de juist netwerk naam.
+
+#### Nat routing
+
+Configureer de domeincontroller als een nat router.
+Dit doe je via _Servermanager_ --> _Tools_ --> _Routing and Remote Access_
+
+Rechtermuisklik op `EP1-DC-ALFA (local)` en kies voor _Configure and Enable Routing and Remote Access_
+
+![Routing and Remote access](../documentatie/images/natrouting.JPG)
+
+Doorloop de wizard en kies voor _Network address translation (NAT)_
+
+![Routing and Remote access](../documentatie/images/natrouting1.JPG)  
+
+En selecteer dan de interface naar het internet, bij ons is dit `WAN`.  
+
+![Routing and Remote access](../documentatie/images/natrouting2.JPG)
+
+Doorloop verder de wizard.
 
 ```json
 {
