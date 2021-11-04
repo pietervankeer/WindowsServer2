@@ -13,7 +13,7 @@ $domainName = $algemeneSettings.ADDS.DomainName
 
 # Domein joinen
 try {
-    Add-Computer -DomainName $domainName -OUPath "OU=MemberServers,DC=EP1-PIETER,DC=hogent" -Credential $Cred
+    Add-Computer -DomainName $domainName -Credential $Cred
     Write-Host "Joined Domein $domainName" -ForegroundColor Green
 }
 catch {
