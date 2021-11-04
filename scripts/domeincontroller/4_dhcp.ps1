@@ -1,4 +1,4 @@
-#------------------------------------------------------------------------------
+﻿#------------------------------------------------------------------------------
 # Domaincontroller
 #------------------------------------------------------------------------------
 
@@ -32,20 +32,19 @@ $ipServer1 = $settings.Network[1].IPAdress
 
 # Install dhcp
 try {
-    $job = @()
+    $jobs = @()
     $jobs += start-Job -Command {
-        Install-WindowsFeature –ConfigurationFilePath F:\configfiles\install_dhcp.xml
+        Install-WindowsFeature -ConfigurationFilePath F:\configfiles\install_dhcp.xml
     }
     Receive-Job -Job $jobs -Wait | select-Object Success, RestartNeeded, exitCode, FeatureResult
     Write-Host "DHCP successfully installed" -ForegroundColor Green
 }
 catch {
-    Write-Warning -Message $("Failed to install DHCP. Error: "+ $_.Exception.Message)
+    Write-Warning -Message $("Failed to install DHCP. Error: " + $_.Exception.Message)
 }
 
 # Configure DHCP
-Try {
-
+try {
     # Create DHCP security groups
     netsh dhcp add securitygroups
 
@@ -57,21 +56,20 @@ Try {
     Add-DHCPServerv4Scope -Name $scopeName -StartRange $scopeStartIp -EndRange $scopeEndIp -SubnetMask $scopeSubMask -Description $scopeDescr -LeaseDuration $scopeLease -State Active
     Write-Host "DHCP scope added" -ForegroundColor Green
 
-    # Authorize DHCP server
+    # authorize DHCP server
     Set-DHCPServerv4OptionValue -ScopeID $scopeId -DnsDomain $domeinNaam -DnsServer $ipServer1 -Router $ipServer1
     Write-Host "Scope authorized" -ForegroundColor Green
 
     # Restart DHCP server
     Restart-Service dhcpserver
-
+    
     # Notify Server Manager that post-install DHCP configuration is complete
     Set-ItemProperty –Path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServerManager\Roles\12 –Name ConfigurationState –Value 2
 
-    Write-Host "DHCP configured successfully" -ForegroundColor Green
-
-} Catch {
-
-    Write-Warning -Message $("Failed to configure DHCP. Error: "+ $_.Exception.Message)
+    Write-Host "DHCP configured succesfully" -ForegroundColor Green
+}
+catch {
+    Write-Warning -Message $("Failed to configure DHCP. Error: " + $_.Exception.Message)
 }
 
 Pause
