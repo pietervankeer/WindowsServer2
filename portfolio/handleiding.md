@@ -21,6 +21,7 @@
     - [Deploymentserver: Initial Setup](#deploymentserver-initial-setup)
     - [Deploymentserver: Join Domain](#deploymentserver-join-domain)
     - [Deploymentserver: installatie benodigdheden](#deploymentserver-installatie-benodigdheden)
+    - [Delegate control](#delegate-control)
   - [Certificatieserver (EP1-CA)](#certificatieserver-ep1-ca)
     - [Certificatieserver: Initial Setup](#certificatieserver-initial-setup)
     - [Certificatieserver: Join Domain](#certificatieserver-join-domain)
@@ -321,9 +322,46 @@ Nadat dit uitgevoerd is en de computer herstart is kan je inloggen met het netwe
 
 ### Deploymentserver: installatie benodigdheden
 
-Nu gaan we de nodige programma's installeren:
+Nu gaan we de nodige programma's downloaden:
 
-Download en installeer [deze programma's](https://hogent-my.sharepoint.com/:u:/g/personal/pieter_vankeer_student_hogent_be/EbWciSXKK7NFpH0JZphaYg8BIib1mLw3EBJ0XtDjv5Oc4g?e=SE3xXO) op de virtuele machines
+Download [deze programma's](https://hogent-my.sharepoint.com/:u:/g/personal/pieter_vankeer_student_hogent_be/ETf9xuuoCyZCuZoH5EAtA_cB4-VkWMSh0dkNX4TV0-BIjQ?e=B1QIyu) en plaats deze in de map `scripts/configfiles`.
+
+### Delegate control
+
+> Deze stap moet gebeuren op de Domeincontroller.
+
+Ga binnen de __Domeincontroller__ naar _Server manager_ --> _Tools_ --> _Active directory Users and Computers_
+
+![ADDS Users and Computers](../documentatie/images/adds_usersAndComputers.JPG)
+
+Selecteer _view_ --> _advanced Features_
+
+![ADDS Users and Computers](../documentatie/images/adds_usersAndComputers_view.JPG)
+
+Navigeer nu naar _System_ en zoek voor een container genaamd _System Management_
+
+![ADDS Users and Computers](../documentatie/images/adds_usersAndComputers_systemmanagement.JPG)
+
+Rechtermuisklik op deze container en selecteer _Delegate Control_
+
+Een wizard opent. Doorloop deze wizard.
+
+Klik op _add_
+
+![Delegate Control](../documentatie/images/delegateControl.JPG)
+
+Verander _Object types_ zodat _computers_ aangevinkt is.  
+Typ vanonder in het invulveld `EP1-SCCM` (dit is de computernaam van de Deploymenyserver) en klik daarna op _Check names_
+
+> Als de computer gevonden is dan zal deze onderstreept zijn.  
+
+Klik op _ok_ om verder te gaan en klik daarna op _Next_
+
+![Delegate Control](../documentatie/images/delegateControl1.JPG)
+![Delegate Control](../documentatie/images/delegateControl2.JPG)
+![Delegate Control](../documentatie/images/delegateControl3.JPG)
+![Delegate Control](../documentatie/images/delegateControl4.JPG)
+![Delegate Control](../documentatie/images/delegateControl5.JPG)
 
 ## Certificatieserver (EP1-CA)
 
