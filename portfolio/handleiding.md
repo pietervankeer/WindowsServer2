@@ -492,7 +492,8 @@ Kies voor _Customize_
 
 Kies voor _Install SSMS_
 
-![install sql](../documentatie/images/install_sql5.JPG)
+![install sql](../documentatie/images/install_SSMS.JPG)
+![install sql](../documentatie/images/install_SSMS2.JPG)
 
 ## 5. Certificatieserver (EP1-CA)
 
