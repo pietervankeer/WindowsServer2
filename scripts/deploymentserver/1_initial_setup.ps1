@@ -40,27 +40,7 @@ catch {
 
 #------------------------------------------------------------------------------
 # Windows updates
-#------------------------------------------------------------------------------
-
-Try{
-    # Stop windows update service
-    Stop-Service wuauserv -ErrorAction Stop
-    Write-Host "wuauserv stopped" -ForegroundColor Green
-}
-catch{
-    Write-Host "Updates not Stopped, something failed" -ForegroundColor Red
-    Get-Service wuauserv
-}
-
-try {
-    # disable windows update service
-    Set-Service -service "wuauserv" -startupType "Disabled"
-    Write-Host "wuauserv disabled" -ForegroundColor Green
-}
-catch {
-    Write-Host "Updates not disabled, something failed" -ForegroundColor Red
-    Get-Service wuauserv
-}
+# windows updates niet uitschakelen.
 #------------------------------------------------------------------------------
 # Network Adapters
 #------------------------------------------------------------------------------
