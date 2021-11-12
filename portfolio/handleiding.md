@@ -23,7 +23,10 @@
     - [4.3 Deploymentserver: installatie benodigdheden](#43-deploymentserver-installatie-benodigdheden)
     - [4.5 Delegate control](#45-delegate-control)
     - [4.6 Unzip sccm bestanden](#46-unzip-sccm-bestanden)
-    - [4.7 Configureer IIS](#47-configureer-iis)
+    - [4.7 Install benodigde roles and features](#47-install-benodigde-roles-and-features)
+    - [4.8 Configure IIS](#48-configure-iis)
+    - [4.9 Installeer Windows ADK](#49-installeer-windows-adk)
+    - [4.9.1](#491)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -379,7 +382,84 @@ Een venster zal verschijnen en klik hier op _unzip_
 
 ![unzip SCCM](../documentatie/images/install_sccm.JPG)
 
-### 4.7 Configureer IIS
+### 4.7 Install benodigde roles and features
+
+> Deze stap moet uitgevoerd worden op de _Deploymentserver_
+
+Voer het script `2_install_sccm.ps1` uit.
+
+Dit script gaat Volgende rollen en features installeren:
+
+- Background intelligent transfer service (BITS)
+- Remote differantial compression
+- .net framework 3.5
+- IIS components
+  - Common HTTP features
+    - Static content
+    - Default document
+    - Directory browsing
+    - HTTP error
+    - HTTP redirection
+    - WebDAV Publishing
+  - Application development
+    - ASP.NET 3.5 en 4.7
+    - .NET extensibility 3.5 en 4.7
+    - ASP
+    - ISAPI extensions
+    - ISAPI filters
+  - Health and diagnostics
+    - HTTP logging
+    - Custom logging
+    - Logging tools
+    - Request monitor
+    - Tracing
+  - Security
+    - Request filtering
+    - Basic authentication
+    - Client certificate mapping authentication
+    - URL authorization
+    - IP and domain restrictions
+    - Windows authentication
+  - Performance
+    - Static content compression
+  - Management tools
+    - IIS management console
+    - IIS manegement Scripts and tools
+    - Management Service
+    - IIS 6 Management Compatibility
+      - IIS 6 Metabase compatibility
+      - IIS 6 WMI compatibility
+      - IIS 6 scripting tools
+      - IIS 6 Management console
+
+### 4.8 Configure IIS
+
+Open via de _server manager_ --> _tools_ --> _Internet information services manager_  
+en navigeer naar _default web site_ en selecteer _Authentication_
+
+![IIS manager](../documentatie/images/sccmIIS.JPG)
+
+Zorg dat _Anonymous Authentication_ op _Enabled_ staat.
+
+![IIS manager](../documentatie/images/sccmIIS2.JPG)
+
+### 4.9 Installeer Windows ADK
+
+Kies voor _open_
+
+![install adk](../documentatie/images/installADK.JPG)
+
+Kies voor _run_
+
+![install adk](../documentatie/images/installADK2.JPG)
+![install adk](../documentatie/images/installADK3.JPG)
+![install adk](../documentatie/images/installADK4.JPG)
+![install adk](../documentatie/images/installADK5.JPG)
+![install adk](../documentatie/images/installADK6.JPG)
+![install adk](../documentatie/images/installADK7.JPG)
+![install adk](../documentatie/images/installADK8.JPG)
+
+### 4.9.1
 
 ## 5. Certificatieserver (EP1-CA)
 
