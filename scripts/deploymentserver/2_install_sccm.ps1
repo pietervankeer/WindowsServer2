@@ -6,11 +6,7 @@
 # Variables
 #------------------------------------------------------------------------------
 
-# Pad naar de installer voor sccm
-$sccmfiles="F:\configfiles\install_sccm.exe"
-$extendSchemaFile="C:\SC_Configmgr_SCEP_1606\SMSSETUP\BIN\X64\extadsch.exe"
-$logfile="C:\ExtADSch.log"
-
+# install nodige features and roles voor SCCM
 try {
     $jobs = @()
     $jobs += start-Job -Command {
@@ -24,3 +20,4 @@ catch {
 }
 
 Pause
+Restart-Computer
