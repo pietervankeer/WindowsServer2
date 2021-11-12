@@ -26,7 +26,8 @@
     - [4.7 Install benodigde roles and features](#47-install-benodigde-roles-and-features)
     - [4.8 Configure IIS](#48-configure-iis)
     - [4.9 Installeer Windows ADK](#49-installeer-windows-adk)
-    - [4.9.1](#491)
+      - [4.9.1 ADK](#491-adk)
+      - [4.9.2 SQL server](#492-sql-server)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -445,21 +446,53 @@ Zorg dat _Anonymous Authentication_ op _Enabled_ staat.
 
 ### 4.9 Installeer Windows ADK
 
+Nu gaan we de Windows ADK installeren, daarna ook nog Windows SQL server.
+
+Run het script `3_install_adk.ps1`.
+
+#### 4.9.1 ADK
+
 Kies voor _open_
 
 ![install adk](../documentatie/images/installADK.JPG)
 
 Kies voor _run_
 
-![install adk](../documentatie/images/installADK2.JPG)
-![install adk](../documentatie/images/installADK3.JPG)
-![install adk](../documentatie/images/installADK4.JPG)
-![install adk](../documentatie/images/installADK5.JPG)
-![install adk](../documentatie/images/installADK6.JPG)
-![install adk](../documentatie/images/installADK7.JPG)
-![install adk](../documentatie/images/installADK8.JPG)
+![install adk](../documentatie/images/installADK2.JPG)  
+![install adk](../documentatie/images/installADK3.JPG)  
+![install adk](../documentatie/images/installADK4.JPG)  
+![install adk](../documentatie/images/installADK5.JPG)  
+![install adk](../documentatie/images/installADK6.JPG)  
+![install adk](../documentatie/images/installADK7.JPG)  
+![install adk](../documentatie/images/installADK8.JPG)  
 
-### 4.9.1
+#### 4.9.2 SQL server
+
+Kies voor _basic_
+
+![install sql](../documentatie/images/install_sql.JPG)  
+![install sql](../documentatie/images/install_sql2.JPG)  
+![install sql](../documentatie/images/install_sql3.JPG)  
+![install sql](../documentatie/images/install_sql4.JPG)  
+
+Kies voor _Customize_
+
+![install sql](../documentatie/images/install_sql5.JPG)  
+![install sql](../documentatie/images/install_sql6.JPG)  
+![install sql](../documentatie/images/install_sql7.JPG)  
+![install sql](../documentatie/images/install_sql8.JPG)  
+![install sql](../documentatie/images/install_sql9.JPG)  
+![install sql](../documentatie/images/install_sql10.JPG)  
+![install sql](../documentatie/images/install_sql11.JPG)  
+![install sql](../documentatie/images/install_sql12.JPG)  
+![install sql](../documentatie/images/install_sql13.JPG)  
+![install sql](../documentatie/images/install_sql14.JPG)  
+![install sql](../documentatie/images/install_sql15.JPG)  
+![install sql](../documentatie/images/install_sql16.JPG)  
+
+Kies voor _Install SSMS_
+
+![install sql](../documentatie/images/install_sql5.JPG)
 
 ## 5. Certificatieserver (EP1-CA)
 
