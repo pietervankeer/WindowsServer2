@@ -33,7 +33,7 @@ else {
 
 # create folder for sccm updates
 if (Test-Path -path "C:\Users\SCCM") {
-    Write-Host "C:\SCCM already exists. Moving on..." -ForegroundColor Green
+    Write-Host "C:\Users\SCCM already exists. Moving on..." -ForegroundColor Green
 }
 else {
     mkdir C:\Users\SCCM
