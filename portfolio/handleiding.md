@@ -46,7 +46,7 @@ Alles wat onder algemeen te vinden is kan je toepassen op alle server die binnen
 
 Maak binnen de hypervisor naar keuze een virtuele machine aan met volgende specificaties:
 
-- 1 processorkern
+- minimum 1 processorkern
 - minimum 2 Gb werkgeheugen
 - 1 netwerkadapter op "Intern netwerk"
 
