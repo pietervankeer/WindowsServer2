@@ -27,7 +27,10 @@
     - [4.8 Configure IIS](#48-configure-iis)
     - [4.9 Installeer Windows ADK](#49-installeer-windows-adk)
       - [4.9.1 ADK](#491-adk)
-      - [4.9.2 SQL server](#492-sql-server)
+      - [4.9.2 Windows adk PE-Addon](#492-windows-adk-pe-addon)
+      - [4.9.3 SQL server](#493-sql-server)
+      - [4.9.4 SSMS](#494-ssms)
+      - [4.9.5 SCCM](#495-sccm)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -466,17 +469,23 @@ Kies voor _run_
 ![install adk](../documentatie/images/installADK7.JPG)  
 ![install adk](../documentatie/images/installADK8.JPG)  
 
-#### 4.9.2 SQL server
+#### 4.9.2 Windows adk PE-Addon
 
-Kies voor _basic_
+![install adk addon](../documentatie/images/install_adk_addon.JPG)  
+![install adk addon](../documentatie/images/install_adk_addon1.JPG)  
+![install adk addon](../documentatie/images/install_adk_addon2.JPG)  
+![install adk addon](../documentatie/images/install_adk_addon3.JPG)  
+![install adk addon](../documentatie/images/install_adk_addon4.JPG)  
+![install adk addon](../documentatie/images/install_adk_addon5.JPG)  
+
+#### 4.9.3 SQL server
+
+Kies voor _Custom_
 
 ![install sql](../documentatie/images/install_sql.JPG)  
 ![install sql](../documentatie/images/install_sql2.JPG)  
 ![install sql](../documentatie/images/install_sql3.JPG)  
 ![install sql](../documentatie/images/install_sql4.JPG)  
-
-Kies voor _Customize_
-
 ![install sql](../documentatie/images/install_sql5.JPG)  
 ![install sql](../documentatie/images/install_sql6.JPG)  
 ![install sql](../documentatie/images/install_sql7.JPG)  
@@ -485,15 +494,75 @@ Kies voor _Customize_
 ![install sql](../documentatie/images/install_sql10.JPG)  
 ![install sql](../documentatie/images/install_sql11.JPG)  
 ![install sql](../documentatie/images/install_sql12.JPG)  
+
+Vul Account name in met `EP1-PIETER\Administrator` en het wachtwoord met je zelf gekozen wachtwoord.
+
 ![install sql](../documentatie/images/install_sql13.JPG)  
+
+Klik op _Add current user_ en daarna op _next_
+
 ![install sql](../documentatie/images/install_sql14.JPG)  
 ![install sql](../documentatie/images/install_sql15.JPG)  
-![install sql](../documentatie/images/install_sql16.JPG)  
 
-Kies voor _Install SSMS_
+Klik op _install_
+![install sql](../documentatie/images/install_sql16.JPG)  
+![install sql](../documentatie/images/install_sql17.JPG)
+  
+#### 4.9.4 SSMS
 
 ![install sql](../documentatie/images/install_SSMS.JPG)
+
+Kies voor _Restart_
+
 ![install sql](../documentatie/images/install_SSMS2.JPG)
+
+Na het herstarten hebben we SQL server en Sql server management studio geïnstalleerd.
+Nu is het tijd om SCCM te installeren.
+
+#### 4.9.5 SCCM
+
+Run het script `4_install_sccm.ps1`
+
+Hier komt dezelfde pop-up terug zoals op de domeincontroller. Klik op _Unzip_ en daarna op close
+
+![install sccm](../documentatie/images/install_SCCM.JPG)
+
+Nadat je de bestanden die nodig zijn voor sccm te installeren hebt unzipt gaan we over tot de installatie van sccm.
+
+Je krijgt volgend scherm te zien en kies hier voor _install_
+
+![install sccm](../documentatie/images/install_sccm1.JPG)  
+![install sccm](../documentatie/images/install_sccm2.JPG)  
+![install sccm](../documentatie/images/install_sccm3.JPG)  
+
+> Wij kiezen voor de evaluation edition omdat dit een proof of concept is maar in een productieomgeving kies je voor _install the licensed edition of this product_
+
+![install sccm](../documentatie/images/install_sccm4.JPG)  
+![install sccm](../documentatie/images/install_sccm5.JPG)  
+
+Nu zal de installatie beginnen van de updates. Kies daarna de gewenste taal.
+
+![install sccm](../documentatie/images/install_sccm7.JPG)  
+![install sccm](../documentatie/images/install_sccm8.JPG)  
+![install sccm](../documentatie/images/install_sccm9.JPG)  
+![install sccm](../documentatie/images/install_sccm10.JPG)  
+
+Bij een eventuele pop-up dan bevestig je met _Yes_.
+
+![install sccm](../documentatie/images/install_sccm11.JPG)  
+![install sccm](../documentatie/images/install_sccm12.JPG)  
+![install sccm](../documentatie/images/install_sccm13.JPG)  
+![install sccm](../documentatie/images/install_sccm14.JPG)  
+![install sccm](../documentatie/images/install_sccm15.JPG)  
+![install sccm](../documentatie/images/install_sccm16.JPG)  
+![install sccm](../documentatie/images/install_sccm17.JPG)  
+![install sccm](../documentatie/images/install_sccm18.JPG)
+
+Kies voor _Begin Install_
+
+![install sccm](../documentatie/images/install_sccm19.JPG)  
+![install sccm](../documentatie/images/install_sccm20.JPG)  
+![install sccm](../documentatie/images/install_sccm21.JPG)  
 
 ## 5. Certificatieserver (EP1-CA)
 
