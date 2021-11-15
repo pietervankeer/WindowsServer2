@@ -4,7 +4,7 @@
 
 # Pad naar de installer voor sccm
 $sccmfiles="F:\configfiles\install_sccm.exe"
-$extendSchemaFile="C:\SC_Configmgr_SCEP_1606\SMSSETUP\BIN\X64\extadsch.exe"
+$extendSchemaFile="C:\MEM_Configmgr_2103\SMSSETUP\BIN\X64\extadsch.exe"
 $logfile="C:\ExtADSch.log"
 
 # install sccm.exe
