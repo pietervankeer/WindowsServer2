@@ -7,19 +7,28 @@
 #------------------------------------------------------------------------------
 
 # Pad naar de installer voor adk en sql
-$file="F:\configfiles\install_adk.exe"
+$adk="F:\configfiles\install_adk.exe"
+$adkaddon="F:\configfiles\install_adk_addon.exe"
 $filesql="F:\configfiles\install_sql2016.exe"
 $filessms="F:\configfiles\install_SSMS.exe"
 
 # install adk.exe
 try {
     $EXEArguments = @(
-        ('"{0}"' -f $file)
+        ('"{0}"' -f $adk)
     )
-    Start-Process "$file" -Wait 
+    Start-Process "$adk" -Wait 
     Write-Host 'Microsoft ADK successfully installed' -ForegroundColor Green
 } catch {
     Write-Warning -Message $("Failed to install Microsoft ADK. Error: " + $_.Exception.Message)
+}
+
+# install adk_addon.exe
+try {
+    Start-Process "$adkaddon" -Wait 
+    Write-Host 'Microsoft ADK addon successfully installed' -ForegroundColor Green
+} catch {
+    Write-Warning -Message $("Failed to install Microsoft ADK addon. Error: " + $_.Exception.Message)
 }
 
 
