@@ -27,7 +27,7 @@ try {
 # install sql.exe
 try {
     $EXEArguments = @(
-        ('"{0}"' -f $file)
+        ('"{0}"' -f $filesql)
     )
     Start-Process "$filesql" -Wait 
     Write-Host 'Microsoft SQL server successfully installed' -ForegroundColor Green
@@ -38,7 +38,7 @@ try {
 # install ssms.exe
 try {
     $EXEArguments = @(
-        ('"{0}"' -f $file)
+        ('"{0}"' -f $filessms)
     )
     Start-Process "$filessms" -Wait 
     Write-Host 'Microsoft SSMS successfully installed' -ForegroundColor Green
