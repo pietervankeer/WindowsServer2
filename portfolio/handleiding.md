@@ -21,16 +21,17 @@
     - [4.1 Deploymentserver: Initial Setup](#41-deploymentserver-initial-setup)
     - [4.2 Deploymentserver: Join Domain](#42-deploymentserver-join-domain)
     - [4.3 Deploymentserver: installatie benodigdheden](#43-deploymentserver-installatie-benodigdheden)
-      - [4.4.1 Delegate control](#441-delegate-control)
-      - [4.4.2 Unzip sccm bestanden](#442-unzip-sccm-bestanden)
-      - [4.4.3 Install benodigde roles and features](#443-install-benodigde-roles-and-features)
-      - [4.4.4 Configure IIS](#444-configure-iis)
-      - [4.4.5 Installeer Windows ADK](#445-installeer-windows-adk)
-        - [4.4.5.1 ADK](#4451-adk)
-        - [4.4.5.2 Windows adk PE-Addon](#4452-windows-adk-pe-addon)
-        - [4.4.5.3 SQL server](#4453-sql-server)
-        - [4.4.5.4 SSMS](#4454-ssms)
-        - [4.4.5.5 SCCM](#4455-sccm)
+      - [4.3.1 Delegate control](#431-delegate-control)
+      - [4.3.2 Unzip sccm bestanden](#432-unzip-sccm-bestanden)
+      - [4.3.3 Install benodigde roles and features](#433-install-benodigde-roles-and-features)
+      - [4.3.4 Configure IIS](#434-configure-iis)
+      - [4.3.5 Installeer Windows ADK](#435-installeer-windows-adk)
+        - [4.3.5.1 ADK](#4351-adk)
+        - [4.34.5.2 Windows adk PE-Addon](#43452-windows-adk-pe-addon)
+        - [4.3.5.3 SQL server](#4353-sql-server)
+        - [4.3.5.4 SSMS](#4354-ssms)
+        - [4.3.5.5 SCCM](#4355-sccm)
+    - [4.4 configuratie SCCM](#44-configuratie-sccm)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -337,7 +338,7 @@ Nu gaan we de nodige programma's downloaden:
 
 Download [deze programma's](https://hogent-my.sharepoint.com/:u:/g/personal/pieter_vankeer_student_hogent_be/ETf9xuuoCyZCuZoH5EAtA_cB4-VkWMSh0dkNX4TV0-BIjQ?e=B1QIyu) en plaats deze in de map `scripts/configfiles`.
 
-#### 4.4.1 Delegate control
+#### 4.3.1 Delegate control
 
 > Deze stap moet gebeuren op de __Domeincontroller__.
 
@@ -376,7 +377,7 @@ Klik op _ok_ om verder te gaan en klik daarna op _Next_
 ![Delegate Control](../documentatie/images/delegateControl4.JPG)
 ![Delegate Control](../documentatie/images/delegateControl5.JPG)
 
-#### 4.4.2 Unzip sccm bestanden
+#### 4.3.2 Unzip sccm bestanden
 
 > Nu werken we terug op de __Domeincontroller__
 > De scripts hiervoor bevinden zich in de map `F:\domeincontroller`
@@ -386,7 +387,7 @@ Een venster zal verschijnen en klik hier op _unzip_
 
 ![unzip SCCM](../documentatie/images/install_sccm.JPG)
 
-#### 4.4.3 Install benodigde roles and features
+#### 4.3.3 Install benodigde roles and features
 
 > Deze stap moet uitgevoerd worden op de _Deploymentserver_
 
@@ -436,7 +437,7 @@ Dit script gaat Volgende rollen en features installeren:
       - IIS 6 scripting tools
       - IIS 6 Management console
 
-#### 4.4.4 Configure IIS
+#### 4.3.4 Configure IIS
 
 Open via de _server manager_ --> _tools_ --> _Internet information services manager_  
 en navigeer naar _default web site_ en selecteer _Authentication_
@@ -447,13 +448,13 @@ Zorg dat _Anonymous Authentication_ op _Enabled_ staat.
 
 ![IIS manager](../documentatie/images/sccmIIS2.JPG)
 
-#### 4.4.5 Installeer Windows ADK
+#### 4.3.5 Installeer Windows ADK
 
 Nu gaan we de Windows ADK installeren, daarna ook nog Windows SQL server.
 
 Run het script `3_install_adk.ps1`.
 
-##### 4.4.5.1 ADK
+##### 4.3.5.1 ADK
 
 Kies voor _open_
 
@@ -469,7 +470,7 @@ Kies voor _run_
 ![install adk](../documentatie/images/installADK7.JPG)  
 ![install adk](../documentatie/images/installADK8.JPG)  
 
-##### 4.4.5.2 Windows adk PE-Addon
+##### 4.34.5.2 Windows adk PE-Addon
 
 ![install adk addon](../documentatie/images/install_adk_addon.JPG)  
 ![install adk addon](../documentatie/images/install_adk_addon1.JPG)  
@@ -478,7 +479,7 @@ Kies voor _run_
 ![install adk addon](../documentatie/images/install_adk_addon4.JPG)  
 ![install adk addon](../documentatie/images/install_adk_addon5.JPG)  
 
-##### 4.4.5.3 SQL server
+##### 4.3.5.3 SQL server
 
 Kies voor _Custom_
 
@@ -508,7 +509,7 @@ Klik op _install_
 ![install sql](../documentatie/images/install_sql16.JPG)  
 ![install sql](../documentatie/images/install_sql17.JPG)
   
-##### 4.4.5.4 SSMS
+##### 4.3.5.4 SSMS
 
 ![install sql](../documentatie/images/install_SSMS.JPG)
 
@@ -519,7 +520,7 @@ Kies voor _Restart_
 Na het herstarten hebben we SQL server en Sql server management studio geïnstalleerd.
 Nu is het tijd om SCCM te installeren.
 
-##### 4.4.5.5 SCCM
+##### 4.3.5.5 SCCM
 
 Run het script `4_install_sccm.ps1`
 
@@ -563,6 +564,8 @@ Kies voor _Begin Install_
 ![install sccm](../documentatie/images/install_sccm19.JPG)  
 ![install sccm](../documentatie/images/install_sccm20.JPG)  
 ![install sccm](../documentatie/images/install_sccm21.JPG)  
+
+### 4.4 configuratie SCCM
 
 ## 5. Certificatieserver (EP1-CA)
 
