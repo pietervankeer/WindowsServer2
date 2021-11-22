@@ -32,6 +32,19 @@
         - [4.3.5.4 SSMS](#4354-ssms)
         - [4.3.5.5 SCCM](#4355-sccm)
     - [4.4 configuratie SCCM](#44-configuratie-sccm)
+      - [4.4.1 Verifieer](#441-verifieer)
+      - [4.4.2 Administration](#442-administration)
+        - [4.4.2.1 Enable Active directory Forest Discovery](#4421-enable-active-directory-forest-discovery)
+        - [4.4.2.2 Enable Active directory System Discovery](#4422-enable-active-directory-system-discovery)
+        - [4.4.2.3 Enable Active directory User Discovery](#4423-enable-active-directory-user-discovery)
+        - [4.4.2.4 Create boundaries](#4424-create-boundaries)
+        - [4.4.2.5 Automatic client push](#4425-automatic-client-push)
+        - [4.4.2.6 Distribution group](#4426-distribution-group)
+      - [4.4.3 Updating SCCM Configuration manager](#443-updating-sccm-configuration-manager)
+      - [4.4.4 Creating packages](#444-creating-packages)
+      - [4.4.4.1 Content distribution](#4441-content-distribution)
+    - [4.4.5.1 Windows Deployment Services](#4451-windows-deployment-services)
+    - [4.4.5.2 PXE setup](#4452-pxe-setup)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -566,6 +579,175 @@ Kies voor _Begin Install_
 ![install sccm](../documentatie/images/install_sccm21.JPG)  
 
 ### 4.4 configuratie SCCM
+
+Voer het script `5_verify_sccm.ps1` uit.
+
+Hierbij zal de sccm console openen. Dit kan even duren.
+
+#### 4.4.1 Verifieer
+
+Kijk na dat `site` en `database` goed werken door linksonder naar de workspace _Monitoring_ te navigeren.  
+Binnen _Monitoring_ het mapje _System status_ te openen en hierin op _Site status_ te klikken. Deze zouden allemaal een groen vinkje moeten hebben.
+
+[verify sccm](../documentatie/images/verify_sccm.JPG)  
+
+#### 4.4.2 Administration
+
+Ga nu naar de workspace _Administration_ en klik door naar _Hierarchy Configuration_ --> _Discovery Methods_  
+
+##### 4.4.2.1 Enable Active directory Forest Discovery
+
+Open met rechtermuisklik de _properties_ van _Active directory Forest Discovery_  
+Vink alles aan en klik op _ok_
+
+[discovery](../documentatie/images/discovery.JPG)  
+
+Als er een prompt komt klik dan op _Yes_
+
+##### 4.4.2.2 Enable Active directory System Discovery
+
+Open met rechtermuisklik de _properties_ van _Active directory System Discovery_  
+Vink _Enable Active Directory System Discovery_ aan
+
+Klik rechts op het geel icoontje
+
+[geel icoontje](../documentatie/images/geelIcoontje.JPG)
+
+En vul bovenaan in het invulveld Path het volgende in: `CN=Computers,DC=EP1-PIETER,DC=hogent`
+
+[Enable AD SD](../documentatie/images/verify_sccm1.JPG)
+
+Klik op OK
+
+[Enable AD SD](../documentatie/images/verify_sccm2.JPG)
+
+Klik op YES
+
+##### 4.4.2.3 Enable Active directory User Discovery
+
+Ga nu naar de workspace _Administration_ en klik door naar _Hierarchy Configuration_ --> _Discovery Methods_  
+Open met rechtermuisklik de _properties_ van _Active directory System Discovery_
+
+Vink _Enable Active Directory System Discovery_ aan
+
+Klik rechts op het geel icoontje
+
+[geel icoontje](../documentatie/images/geelIcoontje.JPG)  
+
+En vul bovenaan in het invulveld Path het volgende in: `CN=Users,DC=EP1-PIETER,DC=hogent` en klik op _browse_, daarna op _ok_
+
+[Enable AD SD](../documentatie/images/verify_sccm1.JPG)  
+
+Klik op OK
+
+[Enable AD SD](../documentatie/images/verify_sccm2.JPG)  
+
+Klik op YES
+
+##### 4.4.2.4 Create boundaries
+
+Navigeer binnen de _Administration_ workspace naar _Boundaries_
+
+[Enable AD SD](../documentatie/images/boundarie.JPG)  
+[Enable AD SD](../documentatie/images/boundarie1.JPG)  
+
+Navigeer binnen de _Administration_ workspace naar _Boundaries groups_
+
+[Enable AD SD](../documentatie/images/boundarie2.JPG)  
+[Enable AD SD](../documentatie/images/boundarie3.JPG)  
+
+Navigeer binnen de _Administration_ workspace naar _Active Directory Forests_ en verifier dat er 1 bestaat
+
+[Enable AD SD](../documentatie/images/boundarie4.JPG)  
+
+Navigeer nog een laatste maal naar _Discovery methods_ voer een system discorvery scan uit
+
+[Enable AD SD](../documentatie/images/boundarie5.JPG)  
+
+Navigeer nu naar _Assets and Complaince__ --> _Devices_ en controleer of er bekende toestellen tussenkomenstaan.
+
+> Let op! dit kan lang duren, ongeveer een 10 minuten.
+
+[Devices](../documentatie/images/devices.JPG)
+
+##### 4.4.2.5 Automatic client push
+
+navigeer naar _Sites_ en klik op _Client Installation Settings_ --> _Client push installation_
+
+[Automatic Client push](../documentatie/images/boundarie6.JPG)  
+[Automatic Client push](../documentatie/images/boundarie7.JPG)  
+
+##### 4.4.2.6 Distribution group
+
+Navigeer naar _Administration_ --> _Distribution points_
+
+[Distribution point](../documentatie/images/distribution.JPG)  
+
+Rechtermuisklik en open _properties_ en ga naar tabblad _Boundary groups_.  
+Voeg met add de juiste boundary group toe.
+
+[Distribution point](../documentatie/images/distribution1.JPG)  
+
+klik op ok  
+Navigeer nu naar _Distribution group_ --> rechtermuisklik --> _Create group_  
+Geef een gepaste naam en kies via _add_ de gepaste server.
+
+[Distribution group](../documentatie/images/distribution2.JPG)  
+
+Ga naar _Boundarie groups_ en selecteer de aangemaakte boundarie group. open properties (rechtermuisklik --> properties)
+en vink _use this boundary group for site assignment_ aan onder het tabblad _References_
+
+[Distribution group](../documentatie/images/boundariegroup.JPG)  
+
+Navigeer naar _Distribution group points_ --> open de properties (rechtermuisklik --> properties) --> tabblad collections --> _add_ --> vink root aan --> ok --> ok
+
+[Distribution group](../documentatie/images/distrigroupprop.JPG)  
+
+Navigeer naar _sites_ --> open _Hierarchy settings_ (rechtermuisklik --> _Hierarchy settings_) --> vink _Clients prefer to use management points in boundary groups_ aan
+
+[Distribution group](../documentatie/images/properties.JPG)  
+
+#### 4.4.3 Updating SCCM Configuration manager
+
+Ga naar _Updates and servicing_ en installeer beschikbare updates
+
+[Distribution group](../documentatie/images/updates.JPG)  
+
+#### 4.4.4 Creating packages
+
+Navigeer binnen de _Software Library_ workspace naar _Packages_
+
+[Distribution group](../documentatie/images/packages.JPG)  
+
+Rechtermuisklik --> _create package_ om een package toe te voegen
+
+Vul de nodige info in
+
+#### 4.4.4.1 Content distribution
+
+Rechtermuisklik op een package --> _Distribute content_ --> next --> add --> distribution point --> selecteer een distribution point. --> deploy
+
+### 4.4.5.1 Windows Deployment Services
+
+Open in de server manager --> _Tools_ --> _Windows Deployment Services_
+
+[WDS](../documentatie/images/wds.JPG)  
+[WDS](../documentatie/images/wds1.JPG)  
+[WDS](../documentatie/images/wds3.JPG)  
+[WDS](../documentatie/images/wds4.JPG)  
+[WDS](../documentatie/images/wds5.JPG)  
+
+### 4.4.5.2 PXE setup
+
+In _SCCM_ ga naar de workspace _Administration_ --> _Distribution points_ --> open de properties van het distribution point
+
+[PXE](../documentatie/images/pxe.JPG)  
+
+klik ok
+
+Navigeer nu naar 
+
+Slide 135
 
 ## 5. Certificatieserver (EP1-CA)
 

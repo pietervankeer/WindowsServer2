@@ -5,9 +5,8 @@
 #------------------------------------------------------------------------------
 # Variables
 #------------------------------------------------------------------------------
-
+# Sccm console path
 $sccm_console="C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\Microsoft.ConfigurationManagement.exe"
-
 
 # try to open sccm console
 try {
