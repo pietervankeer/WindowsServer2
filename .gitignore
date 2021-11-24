@@ -4,3 +4,6 @@
 # install files
 *.msi
 *.exe
+
+# OS images (ISO)
+*.iso
