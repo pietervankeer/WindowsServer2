@@ -48,7 +48,6 @@
       - [4.4.6 MDT](#446-mdt)
         - [4.4.6.1 Installeer MDT](#4461-installeer-mdt)
         - [4.4.6.2 Integrate MDT met SCCM](#4462-integrate-mdt-met-sccm)
-        - [4.4.6.3 Configureer MDT](#4463-configureer-mdt)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -593,7 +592,7 @@ Hierbij zal de sccm console openen. Dit kan even duren.
 Kijk na dat `site` en `database` goed werken door linksonder naar de workspace _Monitoring_ te navigeren.  
 Binnen _Monitoring_ het mapje _System status_ te openen en hierin op _Site status_ te klikken. Deze zouden allemaal een groen vinkje moeten hebben.
 
-[verify sccm](../documentatie/images/verify_sccm.JPG)  
+![verify sccm](../documentatie/images/verify_sccm.JPG)  
 
 #### 4.4.2 Administration
 
@@ -604,7 +603,7 @@ Ga nu naar de workspace _Administration_ en klik door naar _Hierarchy Configurat
 Open met rechtermuisklik de _properties_ van _Active directory Forest Discovery_  
 Vink alles aan en klik op _ok_
 
-[discovery](../documentatie/images/discovery.JPG)  
+![discovery](../documentatie/images/discovery.JPG)  
 
 Als er een prompt komt klik dan op _Yes_
 
@@ -615,15 +614,15 @@ Vink _Enable Active Directory System Discovery_ aan
 
 Klik rechts op het geel icoontje
 
-[geel icoontje](../documentatie/images/geelIcoontje.JPG)
+![geel icoontje](../documentatie/images/geelIcoontje.JPG)
 
 En vul bovenaan in het invulveld Path het volgende in: `CN=Computers,DC=EP1-PIETER,DC=hogent`
 
-[Enable AD SD](../documentatie/images/verify_sccm1.JPG)
+![Enable AD SD](../documentatie/images/verify_sccm1.JPG)
 
 Klik op OK
 
-[Enable AD SD](../documentatie/images/verify_sccm2.JPG)
+![Enable AD SD](../documentatie/images/verify_sccm2.JPG)
 
 Klik op YES
 
@@ -636,15 +635,15 @@ Vink _Enable Active Directory System Discovery_ aan
 
 Klik rechts op het geel icoontje
 
-[geel icoontje](../documentatie/images/geelIcoontje.JPG)  
+![geel icoontje](../documentatie/images/geelIcoontje.JPG)  
 
 En vul bovenaan in het invulveld Path het volgende in: `CN=Users,DC=EP1-PIETER,DC=hogent` en klik op _browse_, daarna op _ok_
 
-[Enable AD SD](../documentatie/images/verify_sccm1.JPG)  
+![Enable AD SD](../documentatie/images/verify_sccm1.JPG)  
 
 Klik op OK
 
-[Enable AD SD](../documentatie/images/verify_sccm2.JPG)  
+![Enable AD SD](../documentatie/images/verify_sccm2.JPG)  
 
 Klik op YES
 
@@ -652,76 +651,76 @@ Klik op YES
 
 Navigeer binnen de _Administration_ workspace naar _Boundaries_
 
-[Enable AD SD](../documentatie/images/boundarie.JPG)  
-[Enable AD SD](../documentatie/images/boundarie1.JPG)  
+![Enable AD SD](../documentatie/images/boundarie.JPG)  
+![Enable AD SD](../documentatie/images/boundarie1.JPG)  
 
 Navigeer binnen de _Administration_ workspace naar _Boundaries groups_
 
-[Enable AD SD](../documentatie/images/boundarie2.JPG)  
-[Enable AD SD](../documentatie/images/boundarie3.JPG)  
+![Enable AD SD](../documentatie/images/boundarie2.JPG)  
+![Enable AD SD](../documentatie/images/boundarie3.JPG)  
 
 Navigeer binnen de _Administration_ workspace naar _Active Directory Forests_ en verifier dat er 1 bestaat
 
-[Enable AD SD](../documentatie/images/boundarie4.JPG)  
+![Enable AD SD](../documentatie/images/boundarie4.JPG)  
 
 Navigeer nog een laatste maal naar _Discovery methods_ voer een system discorvery scan uit
 
-[Enable AD SD](../documentatie/images/boundarie5.JPG)  
+![Enable AD SD](../documentatie/images/boundarie5.JPG)  
 
 Navigeer nu naar _Assets and Complaince__ --> _Devices_ en controleer of er bekende toestellen tussenkomenstaan.
 
 > Let op! dit kan lang duren, ongeveer een 10 minuten.
 
-[Devices](../documentatie/images/devices.JPG)
+![Devices](../documentatie/images/devices.JPG)
 
 ##### 4.4.2.5 Automatic client push
 
 navigeer naar _Sites_ en klik op _Client Installation Settings_ --> _Client push installation_
 
-[Automatic Client push](../documentatie/images/boundarie6.JPG)  
-[Automatic Client push](../documentatie/images/boundarie7.JPG)  
+![Automatic Client push](../documentatie/images/boundarie6.JPG)  
+![Automatic Client push](../documentatie/images/boundarie7.JPG)  
 
 ##### 4.4.2.6 Distribution group
 
 Navigeer naar _Administration_ --> _Distribution points_
 
-[Distribution point](../documentatie/images/distribution.JPG)  
+![Distribution point](../documentatie/images/distribution.JPG)  
 
 Rechtermuisklik en open _properties_ en ga naar tabblad _Boundary groups_.  
 Voeg met add de juiste boundary group toe.
 
-[Distribution point](../documentatie/images/distribution1.JPG)  
+![Distribution point](../documentatie/images/distribution1.JPG)  
 
 klik op ok  
 Navigeer nu naar _Distribution group_ --> rechtermuisklik --> _Create group_  
 Geef een gepaste naam en kies via _add_ de gepaste server.
 
-[Distribution group](../documentatie/images/distribution2.JPG)  
+![Distribution group](../documentatie/images/distribution2.JPG)  
 
 Ga naar _Boundarie groups_ en selecteer de aangemaakte boundarie group. open properties (rechtermuisklik --> properties)
 en vink _use this boundary group for site assignment_ aan onder het tabblad _References_
 
-[Distribution group](../documentatie/images/boundariegroup.JPG)  
+![Distribution group](../documentatie/images/boundariegroup.JPG)  
 
 Navigeer naar _Distribution group points_ --> open de properties (rechtermuisklik --> properties) --> tabblad collections --> _add_ --> vink root aan --> ok --> ok
 
-[Distribution group](../documentatie/images/distrigroupprop.JPG)  
+![Distribution group](../documentatie/images/distrigroupprop.JPG)  
 
 Navigeer naar _sites_ --> open _Hierarchy settings_ (rechtermuisklik --> _Hierarchy settings_) --> vink _Clients prefer to use management points in boundary groups_ aan
 
-[Distribution group](../documentatie/images/properties.JPG)  
+![Distribution group](../documentatie/images/properties.JPG)  
 
 #### 4.4.3 Updating SCCM Configuration manager
 
 Ga naar _Updates and servicing_ en installeer beschikbare updates
 
-[Distribution group](../documentatie/images/updates.JPG)  
+![Distribution group](../documentatie/images/updates.JPG)  
 
 #### 4.4.4 Creating packages
 
 Navigeer binnen de _Software Library_ workspace naar _Packages_
 
-[Distribution group](../documentatie/images/packages.JPG)  
+![Distribution group](../documentatie/images/packages.JPG)  
 
 Rechtermuisklik --> _create package_ om een package toe te voegen
 
@@ -735,17 +734,17 @@ Rechtermuisklik op een package --> _Distribute content_ --> next --> add --> dis
 
 Open in de server manager --> _Tools_ --> _Windows Deployment Services_
 
-[WDS](../documentatie/images/wds.JPG)  
-[WDS](../documentatie/images/wds1.JPG)  
-[WDS](../documentatie/images/wds3.JPG)  
-[WDS](../documentatie/images/wds4.JPG)  
-[WDS](../documentatie/images/wds5.JPG)  
+![WDS](../documentatie/images/wds.JPG)  
+![WDS](../documentatie/images/wds1.JPG)  
+![WDS](../documentatie/images/wds3.JPG)  
+![WDS](../documentatie/images/wds4.JPG)  
+![WDS](../documentatie/images/wds5.JPG)  
 
 ##### 4.4.5.2 PXE setup
 
 In _SCCM_ ga naar de workspace _Administration_ --> _Distribution points_ --> open de properties van het distribution point
 
-[PXE](../documentatie/images/pxe.JPG)  
+![PXE](../documentatie/images/pxe.JPG)  
 
 klik ok
 
@@ -757,13 +756,16 @@ Gebruik hiervoor het script `6_install_mdt.ps1`
 
 ##### 4.4.6.2 Integrate MDT met SCCM
 
+In _SCCM_ ga naar _Administration workspace_ --> _Sites_.  
+Rechtermuisklik op _Sites_ --> _Hierarchy Settings_ --> Zorg dat _Only allow console extension that are approved for the hierarchy_ __NIET__ aangevinkt is.
+
+![hierarchy settings](../documentatie/images/hierarchy.JPG)
+
 Open het windows menu (links beneden) en zoek naar de map _Microsoft Deployment Toolkit_, Klik deze map open en open het programma _Configure ConfigMgr Integration_
 
-[MDT](../documentatie/images/mdt.JPG)  
-[MDT](../documentatie/images/mdt1.JPG)  
-[MDT](../documentatie/images/mdt2.JPG)  
-
-##### 4.4.6.3 Configureer MDT
+![MDT](../documentatie/images/mdt.JPG)  
+![MDT](../documentatie/images/mdt1.JPG)  
+![MDT](../documentatie/images/mdt2.JPG)  
 
 ## 5. Certificatieserver (EP1-CA)
 
