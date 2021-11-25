@@ -5,5 +5,7 @@
 *.msi
 *.exe
 
-# OS images (ISO)
+# OS images (ISO, wim, esd, ...)
 *.iso
+*.wim
+*.esd
