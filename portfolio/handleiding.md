@@ -43,8 +43,12 @@
       - [4.4.3 Updating SCCM Configuration manager](#443-updating-sccm-configuration-manager)
       - [4.4.4 Creating packages](#444-creating-packages)
       - [4.4.4.1 Content distribution](#4441-content-distribution)
-    - [4.4.5.1 Windows Deployment Services](#4451-windows-deployment-services)
-    - [4.4.5.2 PXE setup](#4452-pxe-setup)
+        - [4.4.5.1 Windows Deployment Services](#4451-windows-deployment-services)
+        - [4.4.5.2 PXE setup](#4452-pxe-setup)
+      - [4.4.6 MDT](#446-mdt)
+        - [4.4.6.1 Installeer MDT](#4461-installeer-mdt)
+        - [4.4.6.2 Integrate MDT met SCCM](#4462-integrate-mdt-met-sccm)
+        - [4.4.6.3 Configureer MDT](#4463-configureer-mdt)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -727,7 +731,7 @@ Vul de nodige info in
 
 Rechtermuisklik op een package --> _Distribute content_ --> next --> add --> distribution point --> selecteer een distribution point. --> deploy
 
-### 4.4.5.1 Windows Deployment Services
+##### 4.4.5.1 Windows Deployment Services
 
 Open in de server manager --> _Tools_ --> _Windows Deployment Services_
 
@@ -737,7 +741,7 @@ Open in de server manager --> _Tools_ --> _Windows Deployment Services_
 [WDS](../documentatie/images/wds4.JPG)  
 [WDS](../documentatie/images/wds5.JPG)  
 
-### 4.4.5.2 PXE setup
+##### 4.4.5.2 PXE setup
 
 In _SCCM_ ga naar de workspace _Administration_ --> _Distribution points_ --> open de properties van het distribution point
 
@@ -745,9 +749,21 @@ In _SCCM_ ga naar de workspace _Administration_ --> _Distribution points_ --> op
 
 klik ok
 
-Navigeer nu naar 
+#### 4.4.6 MDT
 
-Slide 135
+##### 4.4.6.1 Installeer MDT
+
+Gebruik hiervoor het script `6_install_mdt.ps1`
+
+##### 4.4.6.2 Integrate MDT met SCCM
+
+Open het windows menu (links beneden) en zoek naar de map _Microsoft Deployment Toolkit_, Klik deze map open en open het programma _Configure ConfigMgr Integration_
+
+[MDT](../documentatie/images/mdt.JPG)  
+[MDT](../documentatie/images/mdt1.JPG)  
+[MDT](../documentatie/images/mdt2.JPG)  
+
+##### 4.4.6.3 Configureer MDT
 
 ## 5. Certificatieserver (EP1-CA)
 
