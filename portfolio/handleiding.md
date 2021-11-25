@@ -42,12 +42,14 @@
         - [4.4.2.6 Distribution group](#4426-distribution-group)
       - [4.4.3 Updating SCCM Configuration manager](#443-updating-sccm-configuration-manager)
       - [4.4.4 Creating packages](#444-creating-packages)
-      - [4.4.4.1 Content distribution](#4441-content-distribution)
+        - [4.4.4.1 Content distribution](#4441-content-distribution)
+        - [4.4.4.2 Add Besturingssysteem](#4442-add-besturingssysteem)
         - [4.4.5.1 Windows Deployment Services](#4451-windows-deployment-services)
         - [4.4.5.2 PXE setup](#4452-pxe-setup)
       - [4.4.6 MDT](#446-mdt)
         - [4.4.6.1 Installeer MDT](#4461-installeer-mdt)
         - [4.4.6.2 Integrate MDT met SCCM](#4462-integrate-mdt-met-sccm)
+        - [4.4.6.3 MDT Task sequence](#4463-mdt-task-sequence)
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
@@ -726,9 +728,25 @@ Rechtermuisklik --> _create package_ om een package toe te voegen
 
 Vul de nodige info in
 
-#### 4.4.4.1 Content distribution
+##### 4.4.4.1 Content distribution
 
 Rechtermuisklik op een package --> _Distribute content_ --> next --> add --> distribution point --> selecteer een distribution point. --> deploy
+
+##### 4.4.4.2 Add Besturingssysteem
+
+Navigeer naar de workspace _Software Library_ --> _Operating Systems_ --> Rechtermuisklik op _Operating system images_
+
+![import os](../documentatie/images/osimport.JPG)  
+
+Importeer het gewenste besturingssysteem. Na het importeren gaan we het besturingssysteem distribueren
+
+![import os](../documentatie/images/osimport1.JPG)  
+
+Doorloop de wizard en klik op _add_ --> _distribution point_ --> kies hier uw gewenste distribution point.
+
+Na het doorlopen van de wizard wacht dan tot de distributie voltooid is.
+
+![import os](../documentatie/images/osimport2.JPG)  
 
 ##### 4.4.5.1 Windows Deployment Services
 
@@ -766,6 +784,31 @@ Open het windows menu (links beneden) en zoek naar de map _Microsoft Deployment 
 ![MDT](../documentatie/images/mdt.JPG)  
 ![MDT](../documentatie/images/mdt1.JPG)  
 ![MDT](../documentatie/images/mdt2.JPG)  
+
+##### 4.4.6.3 MDT Task sequence
+
+Navigeer binnen _SCCM_ naar de workspace _Software Library_ --> _Operating systems_ --> Rechtermuisklik op _Task sequences_ --> __
+
+![MDT task sequence](../documentatie/images/mdttaskseq.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq1.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq2.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq3.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq4.JPG)  
+
+Als u deze nog niet heeft aangemaakt kiest u voor de andere optie.
+
+![MDT task sequence](../documentatie/images/mdttaskseq5.JPG)  
+
+Kies hier uw gewenste besturingssysteem
+
+![MDT task sequence](../documentatie/images/mdttaskseq6.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq7.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq8.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq9.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq10.JPG)  
+![MDT task sequence](../documentatie/images/mdttaskseq11.JPG)  
+
+klik op _next_ --> _next_ en _close_
 
 ## 5. Certificatieserver (EP1-CA)
 
