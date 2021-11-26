@@ -54,6 +54,9 @@
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
     - [5.3 Certificatieserver: installatie benodigdheden](#53-certificatieserver-installatie-benodigdheden)
+  - [6. Client deployen (EP1-CLTy)](#6-client-deployen-ep1-clty)
+    - [6.1 VM aanmaken in virtualbox](#61-vm-aanmaken-in-virtualbox)
+    - [6.2 Client opstarten](#62-client-opstarten)
 
 ---
 
@@ -810,6 +813,10 @@ Kies hier uw gewenste besturingssysteem
 
 klik op _next_ --> _next_ en _close_
 
+Nadat je de task sequence hebt aangemaakt moet je deze _Deployen_
+
+Rechtermuisklik op de task sequence en kies voor _deploy_
+
 ## 5. Certificatieserver (EP1-CA)
 
 > Alle scripts voor de certificatieserver bevinden zicht in `F:\certificaatserver`
@@ -853,3 +860,41 @@ nadat dit uitgevoerd is en de computer herstart is kan je inloggen met het netwe
 Nadat de [computer in het domein](#certificatieserver-join-domain) zit kan je overgaan tot nodige rollen te installeren. Dit kan je doen met het script [2_install_ca.ps1](../scripts/certificaatserver/2_install_ca.ps1)
 
 Dit script gaat de rol `Active Directory Certificate Services` installeren.
+
+## 6. Client deployen (EP1-CLTy)
+
+### 6.1 VM aanmaken in virtualbox
+
+In virtualbox klik bovenaan op nieuw
+
+![vm maken](../documentatie/images/nieuwx.JPG)  
+
+Geef de vm een gepaste naam
+
+![vm maken](../documentatie/images/clientaanmaken.JPG)  
+
+Doorloop de wizard en neem overal de default instellingen
+
+Nu de vm aangemaakt is geen we de instellingen aanpassen. Open de instellingen van de vm.
+
+Bij het setie _systeem_
+
+Configureer je de _opstartvolgorde_ zoals onderstaand:
+
+- [X] Netwerk
+- [X] Harde schijf
+- [ ] Optisch
+- [ ] Diskette
+
+Navigeer nu naar de sectie netwerk
+
+Configureer de adapter naar _intern netwerk_. Zorg er voor dat het intern netwerk dat we aangemaakt hebben geselecteerd is. `WinServ`
+
+### 6.2 Client opstarten
+
+- Start de client op en wacht tot er iets verschijnt als `Press F12 for PXE boot`
+- Druk op `F12`
+- Kies de task sequence dat je wil laten lopen
+- Laat de client installeren
+
+Nadat de installatie doorlopen is. Kan je in SCCM nakijken dat er een nieuw device is.
