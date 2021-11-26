@@ -1,5 +1,14 @@
-# Handleiding Windows Server 2
+# Opdracht Windows Server 2
 
+- [Opdracht Windows Server 2](#opdracht-windows-server-2)
+- [Documentatie Windows Server 2](#documentatie-windows-server-2)
+  - [1. Domeincontroller (EP1-DC-ALFA)](#1-domeincontroller-ep1-dc-alfa)
+    - [1.1 ADDS](#11-adds)
+    - [1.2 DNS](#12-dns)
+    - [1.3 DHCP](#13-dhcp)
+  - [2. Webserver (EP1-WEB)](#2-webserver-ep1-web)
+  - [3. Deploymentserver (EP1-SCCM)](#3-deploymentserver-ep1-sccm)
+  - [4. Certificatieserver (EP1-CA)](#4-certificatieserver-ep1-ca)
 - [Handleiding Windows Server 2](#handleiding-windows-server-2)
   - [1. Algemeen](#1-algemeen)
     - [1.1 Virtuele machine aanmaken](#11-virtuele-machine-aanmaken)
@@ -59,6 +68,40 @@
     - [6.2 Client opstarten](#62-client-opstarten)
 
 ---
+
+# Documentatie Windows Server 2
+
+## 1. Domeincontroller (EP1-DC-ALFA)
+
+De domeincontroller staat in voor de noodzakelijke dingen te regelen binnen het netwerk.
+
+### 1.1 ADDS
+
+Active directory maakt het mogelijk om gebruikersaccounts aan te maken op netwerk. Hiermee kan elke gebruiker inloggen op een computer binnen het netwerk met zijn eigen account.  
+Als je bijvoorbeeld denkt aan een schoolomgeving. Iedere student heeft zijn eigen account en meldt zich aan op een computer van de school. Als hij zich inlogt in lokaal A en daar een word-document maakt dan is het mogelijk dat hij in lokaal B kan verderwerken aan het word-document.
+
+### 1.2 DNS
+
+DNS gaat er voor zorgen dat IP adressen kunnen worden omgezet naar hostnames en andersom.
+
+### 1.3 DHCP
+
+Om de domeincontroller IP adressen te laten uitdelen moeten we hiervan een DHCP-server maken.
+Dit zorgt er voor dat de rol DHCP server zal geinstalleerd worden alsook het aanmaken van een DHCP scope waar kan instellen welke addressen er worden uitgedeeld en welke niet.
+
+## 2. Webserver (EP1-WEB)
+
+De webserver is redelijk vanzelfsprekend. Dit is een webpagina waar gebruikers kunnen naar surfen.
+
+## 3. Deploymentserver (EP1-SCCM)
+
+Om efficiënt nieuwe computers te installeren in het netwerk gaan we een deploymentserver opzetten. Hier kan je dan via het netwerk een besturingssysteem installeren op de computer alsook software die je nodig hebt binnen het netwerk.
+
+## 4. Certificatieserver (EP1-CA)
+
+Om de webserver te bezoeken via __HTTPS__ hebben we nood aan een certificaat en dit wordt gegenereerd door de certificaatserver.
+
+# Handleiding Windows Server 2
 
 ## 1. Algemeen
 
@@ -173,8 +216,6 @@ Het [initial setup](../scripts/domeincontroller/1_initial_setup.ps1) script gaat
 
 ### 2.2 Active Directory Domain Services (ADDS)
 
-Active directory maakt het mogelijk om gebruikersaccounts aan te maken op netwerk. Hiermee kan elke gebruiker inloggen op een computer binnen het netwerk met zijn eigen account.  
-Als je bijvoorbeeld denkt aan een schoolomgeving. Iedere student heeft zijn eigen account en meldt zich aan op een computer van de school. Als hij zich inlogt in lokaal A en daar een word-document maakt dan is het mogelijk dat hij in lokaal B kan verderwerken aan het word-document.  
 Het script [2_adds.ps1](../scripts/domeincontroller/2_adds.ps1) zorgt ervoor dat de role `Active Directory Domain Services` geinstalleerd en geconfigureerd wordt.  
 Het gaat de rol `Active Directory Domain Services` installeren en daarna de server promoveren naar een domeincontroller.  
 Tijdens de promotie worden de domeinnaam, netbiosnaam en safemode administrator wachtwoord ingesteld uit de [algemene settings](../scripts/settings.json).  
