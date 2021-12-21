@@ -1,6 +1,7 @@
 # Opdracht Windows Server 2
 
 - [Opdracht Windows Server 2](#opdracht-windows-server-2)
+- [Opdracht Windows Server 2](#opdracht-windows-server-2-1)
 - [Documentatie Windows Server 2](#documentatie-windows-server-2)
   - [1. Domeincontroller (EP1-DC-ALFA)](#1-domeincontroller-ep1-dc-alfa)
     - [1.1 ADDS](#11-adds)
@@ -66,12 +67,37 @@
   - [5. Certificatieserver (EP1-CA)](#5-certificatieserver-ep1-ca)
     - [5.1 Certificatieserver: Initial Setup](#51-certificatieserver-initial-setup)
     - [5.2 Certificatieserver: Join Domain](#52-certificatieserver-join-domain)
-    - [5.3 Certificatieserver: installatie benodigdheden](#53-certificatieserver-installatie-benodigdheden)
+    - [5.3 Certificatieserver: installatie en configuratie benodigdheden](#53-certificatieserver-installatie-en-configuratie-benodigdheden)
   - [6. Client deployen (EP1-CLTy)](#6-client-deployen-ep1-clty)
     - [6.1 VM aanmaken in virtualbox](#61-vm-aanmaken-in-virtualbox)
     - [6.2 Client opstarten](#62-client-opstarten)
 
 ---
+
+# Opdracht Windows Server 2
+
+![Netwerk topologie opdracht](../documentatie/images/opdracht.JPG)
+
+- Domeincontroller
+  - OS: Windows 2019
+  - Naam: EP1-DC-ALFA
+  - IP instellingen:
+    - `192.168.10.200/24`
+- Web server
+  - OS: Windows 2019
+  - Naam: EP1-WEB
+  - IP instellingen
+    - `192.168.10.220/24`
+- Deployment server
+  - OS: Windows 2019
+  - Naam: EP1-SCCM
+  - IP instellingen:
+    - `192.168.10.225/24`
+- Certificaat server
+  - OS: Windows 2019
+  - Naam: EP1-CA
+  - IP instellingen:
+    - `192.168.10.230/24`
 
 # Documentatie Windows Server 2
 
@@ -926,11 +952,11 @@ Na de [Initial Setup](#certificatieserver-initial-setup) is het tijd om het dome
 
 nadat dit uitgevoerd is en de computer herstart is kan je inloggen met het netwerk administrator account `EP1-PIETER\Administrator`
 
-### 5.3 Certificatieserver: installatie benodigdheden
+### 5.3 Certificatieserver: installatie en configuratie benodigdheden
 
 Nadat de [computer in het domein](#certificatieserver-join-domain) zit kan je overgaan tot nodige rollen te installeren. Dit kan je doen met het script [2_install_ca.ps1](../scripts/certificaatserver/2_install_ca.ps1)
 
-Dit script gaat de rol `Active Directory Certificate Services` installeren.
+Dit script gaat de rol `Active Directory Certificate Services` installeren en configureren. Er zal een Enterprise root CA geconfigureerd worden.
 
 ## 6. Client deployen (EP1-CLTy)
 
