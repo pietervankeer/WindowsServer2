@@ -159,6 +159,8 @@ Wanneer u digitale servercertificaten gebruikt voor de authenticatie tussen comp
 
 # Handleiding Windows Server 2
 
+> Opgelet! Voordat we beginnen gelievie alle bestanden in het archief `benodigdheden Deplymentserver.zip` uit te pakken in het de map `scripts/configfiles` te stoppen.
+
 ## 1. Algemeen
 
 Alles wat onder algemeen te vinden is kan je toepassen op alle server die binnen de opdracht vallen van Windows Server 2
