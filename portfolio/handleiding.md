@@ -7,8 +7,12 @@
     - [1.2 DNS](#12-dns)
     - [1.3 DHCP](#13-dhcp)
   - [2. Webserver (EP1-WEB)](#2-webserver-ep1-web)
+    - [Internet Information Services (IIS)](#internet-information-services-iis)
   - [3. Deploymentserver (EP1-SCCM)](#3-deploymentserver-ep1-sccm)
+    - [Microsoft Endpoint configuration manager (MECM)](#microsoft-endpoint-configuration-manager-mecm)
+    - [Windows Deployment Services (WDS)](#windows-deployment-services-wds)
   - [4. Certificatieserver (EP1-CA)](#4-certificatieserver-ep1-ca)
+    - [Active Directory Certificate Services (AD CS)](#active-directory-certificate-services-ad-cs)
 - [Handleiding Windows Server 2](#handleiding-windows-server-2)
   - [1. Algemeen](#1-algemeen)
     - [1.1 Virtuele machine aanmaken](#11-virtuele-machine-aanmaken)
@@ -93,13 +97,39 @@ Dit zorgt er voor dat de rol DHCP server zal geinstalleerd worden alsook het aan
 
 De webserver is redelijk vanzelfsprekend. Dit is een webpagina waar gebruikers kunnen naar surfen.
 
+### Internet Information Services (IIS)
+
+Dit is de rol waarin je de website kan configureren. Je kan hier bijvoorbeeld ook meegeven dat je de website enkel over _http_, _https_ of beide kan bereiken.
+
 ## 3. Deploymentserver (EP1-SCCM)
 
 Om efficiënt nieuwe computers te installeren in het netwerk gaan we een deploymentserver opzetten. Hier kan je dan via het netwerk een besturingssysteem installeren op de computer alsook software die je nodig hebt binnen het netwerk.
 
+### Microsoft Endpoint configuration manager (MECM)
+
+Wij gaan de Endpoint manager gaan gebruiken om:
+
+- __Applicaties__ uit te sturen in het netwerk.
+- __Clients__ te installeren.
+- __Capture__ te nemen van bestaande clients.
+
+### Windows Deployment Services (WDS)
+
+__WDS__ maakt het mogelijk om via pxe-boot een client te gaan installeren of te capturen.
+
 ## 4. Certificatieserver (EP1-CA)
 
 Om de webserver te bezoeken via __HTTPS__ hebben we nood aan een certificaat en dit wordt gegenereerd door de certificaatserver.
+
+### Active Directory Certificate Services (AD CS)
+
+Met AD CS kunt u een PKI (Public Key Infrastructure) bouwen en uw organisatie voorzien van public key cryptografie, digitale certificaten en digitale handtekeningmogelijkheden.
+
+Wanneer u digitale servercertificaten gebruikt voor de authenticatie tussen computers in uw netwerk, bieden de certificaten:
+
+- Vertrouwelijkheid door encryptie.
+- Integriteit door digitale handtekeningen.
+- Authenticatie door certificaatsleutels te koppelen aan computer-, gebruikers- of apparaataccounts in een computernetwerk.
 
 # Handleiding Windows Server 2
 
