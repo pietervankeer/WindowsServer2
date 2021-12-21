@@ -32,6 +32,7 @@ Try {
 # Promotion to domain controller
 #------------------------------------------------------------------------------
 
+# installeer nieuw AD forest
 try {
     Import-Module ADDSDeployment
     Install-ADDSForest `
@@ -53,7 +54,7 @@ catch {
     Write-Warning -Message $("Failed to configure Active Directory Domain Services. Error: "+ $_.Exception.Message)
 }
 
-
+# OU aanmaken voor memberservers
 try {
     NEW-ADOrganizationalUnit "MemberServers"
     Write-Host "Active Directory Domain Services Organisational Unit has been addedd" -ForegroundColor Green

@@ -30,6 +30,7 @@ catch {
 # NAT routing
 #------------------------------------------------------------------------------
 
+# installeer benodigde role
 try {
     $jobs = @()
     $jobs += start-Job -Command {

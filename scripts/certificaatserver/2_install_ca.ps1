@@ -14,7 +14,7 @@
 # Installation Certificatieserver role
 #------------------------------------------------------------------------------
 
-# Install roles
+# Install benodigde rollen
 try {
     $jobs = @()
     $jobs += start-Job -Command {
@@ -23,14 +23,14 @@ try {
     Receive-Job -Job $jobs -Wait | select-Object Success, RestartNeeded, exitCode, FeatureResult
     Write-Host 'webserver successfully installed' -ForegroundColor Green
 } catch {
-    Write-Warning -Message $("Failed to install webserver. Error: " + $_.Exception.Message)
+    Write-Warning -Message $("Failed to install AD CS. Error: " + $_.Exception.Message)
 }
 
 #------------------------------------------------------------------------------
-# Configuration Webserver
+# Configuration Certificatieserver
 #------------------------------------------------------------------------------
 
-# TODO
+# configureer de rol AD CS zodat een deze zich zal gedragen als een Enterprise root CA
 try {
     $jobs = @()
     $jobs += start-Job -Command {
@@ -39,7 +39,7 @@ try {
     Receive-Job -Job $jobs -Wait | select-Object Success, RestartNeeded, exitCode, FeatureResult
 }
 catch {
-    Write-Warning -Message $("Failed to install webserver. Error: " + $_.Exception.Message)
+    Write-Warning -Message $("Failed to configure AD CS. Error: " + $_.Exception.Message)
 }
 
 
