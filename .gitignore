@@ -9,3 +9,6 @@
 *.iso
 *.wim
 *.esd
+
+# internet shortcuts
+*.url
